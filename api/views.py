@@ -130,3 +130,15 @@ class EmployeesUsingMixInDetails(mixins.RetrieveModelMixin, mixins.DestroyModelM
 
     def delete(self, request, pk):
         return self.destroy(request, pk)
+
+
+# Generics
+class EmployeeGenerics(generics.ListCreateAPIView):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+
+
+class EmployeeGenericsDetails(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+    lookup_field = "pk"
