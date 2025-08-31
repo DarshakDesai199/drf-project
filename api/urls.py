@@ -19,5 +19,11 @@ urlpatterns = [
 
     path('employeeGenerics/', views.EmployeeGenerics.as_view()),
     path('employeeGenerics/<int:pk>/', views.EmployeeGenericsDetails.as_view()),
-    path('', include(router.urls))
+    path('', include(router.urls)),
+
+    path('blogs/', views.BlogsView.as_view()),
+    path('comments/', views.CommentsView.as_view()),
+    path('blogs/<int:pk>/', views.BlogsDetailsView.as_view()),
+    path('comments/<int:pk>/', views.CommentsDetailsView.as_view()),
+
 ]
