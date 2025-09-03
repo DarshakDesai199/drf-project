@@ -18,6 +18,7 @@ from django.http import Http404
 from rest_framework import mixins, generics, viewsets
 from blogs.models import Blog, Comment
 from blogs.serializers import BlogSerializer, CommentSerializer
+from .paginations import CustomPagination
 
 
 # def studentsView(request):
@@ -140,6 +141,7 @@ class EmployeesUsingMixInDetails(mixins.RetrieveModelMixin, mixins.DestroyModelM
 class EmployeeGenerics(generics.ListCreateAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+    pagination_class = CustomPagination
 
 
 class EmployeeGenericsDetails(generics.RetrieveUpdateDestroyAPIView):
@@ -181,11 +183,11 @@ class EmployeeViewSet(viewsets.ViewSet):
         employee.delete()
         return Response(status=status.HTTP_404_NOT_FOUND)
 
+
 # Model view sets
 class EmployeeModelViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
-
 
 
 # Nested Serializer
