@@ -19,6 +19,7 @@ from rest_framework import mixins, generics, viewsets
 from blogs.models import Blog, Comment
 from blogs.serializers import BlogSerializer, CommentSerializer
 from .paginations import CustomPagination
+from employee.filters import EmployeeFilter
 
 
 # def studentsView(request):
@@ -142,7 +143,7 @@ class EmployeeGenerics(generics.ListCreateAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     pagination_class = CustomPagination
-    filterset_fields = ['designation']
+    filterset_class = EmployeeFilter
 
 
 class EmployeeGenericsDetails(generics.RetrieveUpdateDestroyAPIView):
